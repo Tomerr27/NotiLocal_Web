@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Diario Nacional — Noticias de México y el Mundo</title>
+  <meta name="description" content="Noticias, análisis y reportajes de México y el mundo. Información confiable, actualizada y sin sesgos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- BREAKING NEWS TICKER -->
+  <div class="breaking-bar" aria-label="Noticias de última hora">
+    <span class="breaking-label">ÚLTIMA HORA</span>
+    <div class="ticker-wrapper">
+      <div class="ticker-track" id="ticker">
+        <span class="ticker-item">Banco de México mantiene tasa de interés en 8.5% por tercer mes consecutivo</span>
+        <span class="sep">·</span>
+        <span class="ticker-item">Huracán categoría 2 se aproxima a las costas del Golfo de México</span>
+        <span class="sep">·</span>
+        <span class="ticker-item">México y Estados Unidos firman acuerdo de cooperación tecnológica por 4,200 millones de dólares</span>
+        <span class="sep">·</span>
+        <span class="ticker-item">Selección Mexicana avanza a cuartos de final en la Copa Oro</span>
+        <span class="sep">·</span>
+        <span class="ticker-item">Nueva reforma energética debate en el Senado esta tarde</span>
+        <span class="sep">·</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <div class="header-meta">
+        <span class="date-tag">Martes, 23 de junio de 2026</span>
+        <nav class="header-links">
+          <a href="#">Suscribirse</a>
+          <a href="#">Iniciar sesión</a>
+        </nav>
+      </div>
+      <div class="masthead">
+        <div class="masthead-rule"></div>
+        <h1 class="site-name">El Diario <em>Nacional</em></h1>
+        <div class="masthead-rule"></div>
+      </div>
+      <nav class="main-nav" aria-label="Secciones principales">
+        <a href="#" class="nav-link active">Inicio</a>
+        <a href="#" class="nav-link">México</a>
+        <a href="#" class="nav-link">Mundo</a>
+        <a href="#" class="nav-link">Economía</a>
+        <a href="#" class="nav-link">Política</a>
+        <a href="#" class="nav-link">Tecnología</a>
+        <a href="#" class="nav-link">Cultura</a>
+        <a href="#" class="nav-link">Deportes</a>
+        <a href="#" class="nav-link">Opinión</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero container">
+    <div class="hero-grid">
+
+      <!-- NOTA PRINCIPAL -->
+      <article class="hero-main" tabindex="0">
+        <div class="hero-img-wrap">
+          <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=900&q=80&auto=format" alt="Ciudad de México vista aérea" loading="eager" />
+          <span class="category-badge cat-mexico">México</span>
+        </div>
+        <div class="hero-content">
+          <p class="eyebrow">Informe especial</p>
+          <h2 class="headline-xl">La transformación silenciosa del sur de México: inversión récord redefine al Istmo de Tehuantepec</h2>
+          <p class="deck">Con más de 40 mil millones de pesos comprometidos en los últimos 18 meses, la región enfrenta al mismo tiempo un boom económico sin precedente y tensiones sociales que amenazan con fracturar comunidades ancestrales.</p>
+          <div class="meta-row">
+            <span class="author">Por <strong>Carolina Vásquez</strong></span>
+            <time datetime="2026-06-23">Hace 2 horas</time>
+            <span class="read-time">· 8 min de lectura</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- COLUMNA LATERAL -->
+      <aside class="hero-sidebar">
+        <article class="side-card" tabindex="0">
+          <span class="category-badge cat-economia">Economía</span>
+          <h3 class="headline-md">El peso mexicano gana terreno frente al dólar por cuarta jornada consecutiva</h3>
+          <div class="meta-row">
+            <time datetime="2026-06-23">Hace 45 min</time>
+          </div>
+        </article>
+        <div class="divider"></div>
+
+        <article class="side-card" tabindex="0">
+          <span class="category-badge cat-mundo">Mundo</span>
+          <h3 class="headline-md">Cumbre del G7 concluye sin acuerdo vinculante sobre IA militar; México observa como invitado</h3>
+          <div class="meta-row">
+            <time datetime="2026-06-23">Hace 1 hora</time>
+          </div>
+        </article>
+        <div class="divider"></div>
+
+        <article class="side-card" tabindex="0">
+          <span class="category-badge cat-politica">Política</span>
+          <h3 class="headline-md">Gobernadora de Nuevo León anuncia plan de seguridad con drones de vigilancia para 2027</h3>
+          <div class="meta-row">
+            <time datetime="2026-06-23">Hace 3 horas</time>
+          </div>
+        </article>
+        <div class="divider"></div>
+
+        <article class="side-card" tabindex="0">
+          <span class="category-badge cat-tech">Tecnología</span>
+          <h3 class="headline-md">Startup mexicana de semiconductores recauda 120 millones de dólares en Serie B</h3>
+          <div class="meta-row">
+            <time datetime="2026-06-23">Hace 4 horas</time>
+          </div>
+        </article>
+      </aside>
+    </div>
+  </section>
+
+  <!-- DIVISOR EDITORIAL -->
+  <div class="section-divider container">
+    <span>Lo más reciente</span>
+  </div>
+
+  <!-- GRID SECUNDARIO -->
+  <section class="news-grid container">
+
+    <article class="news-card" tabindex="0">
+      <div class="card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=500&q=75&auto=format" alt="Mercado de valores" loading="lazy" />
+      </div>
+      <span class="category-badge cat-economia">Economía</span>
+      <h3 class="headline-sm">PEMEX presenta plan de reducción de deuda con enfoque en energía renovable para la próxima década</h3>
+      <p class="card-deck">La empresa productiva del Estado busca diversificar ingresos y reducir dependencia de hidrocarburos ante presión internacional.</p>
+      <div class="meta-row">
+        <span class="author">Por <strong>Arturo Méndez</strong></span>
+        <time datetime="2026-06-23">Hace 5 horas</time>
+      </div>
+    </article>
+
+    <article class="news-card" tabindex="0">
+      <div class="card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=500&q=75&auto=format" alt="Tecnología e innovación" loading="lazy" />
+      </div>
+      <span class="category-badge cat-tech">Tecnología</span>
+      <h3 class="headline-sm">Guadalajara supera a Monterrey como segundo polo tecnológico del país según ranking anual</h3>
+      <p class="card-deck">El crecimiento de empresas de software y nearshoring en la Perla Tapatía impulsa el desplazamiento en el índice de innovación.</p>
+      <div class="meta-row">
+        <span class="author">Por <strong>Sofía Ramírez</strong></span>
+        <time datetime="2026-06-23">Hace 6 horas</time>
+      </div>
+    </article>
+
+    <article class="news-card" tabindex="0">
+      <div class="card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&q=75&auto=format" alt="Asamblea política" loading="lazy" />
+      </div>
+      <span class="category-badge cat-politica">Política</span>
+      <h3 class="headline-sm">Cámara de Diputados aprueba en primera lectura reforma al sistema de pensiones del IMSS</h3>
+      <p class="card-deck">La modificación incrementaría la aportación patronal del 5.15% al 7.5% a partir de 2028, generando debate entre empresarios y sindicatos.</p>
+      <div class="meta-row">
+        <span class="author">Por <strong>Marco Antonio Fuentes</strong></span>
+        <time datetime="2026-06-23">Hace 7 horas</time>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- FRANJA DESTACADA: OPINIÓN -->
+  <section class="opinion-strip">
+    <div class="container">
+      <h2 class="strip-title">Opinión</h2>
+      <div class="opinion-grid">
+
+        <article class="opinion-card" tabindex="0">
+          <div class="columnist-info">
+            <div class="columnist-avatar" style="background:#D63031;">CR</div>
+            <div>
+              <strong class="columnist-name">Cristina Robles</strong>
+              <span class="columnist-role">Análisis político</span>
+            </div>
+          </div>
+          <h3 class="headline-sm">"Las elecciones de 2027 ya comenzaron, y nadie quiere admitirlo"</h3>
+          <p class="card-deck">La carrera por la presidencia se libra en el lenguaje de los proyectos sociales, no en las declaraciones abiertas. El país necesita claridad, no estrategia.</p>
+        </article>
+
+        <article class="opinion-card" tabindex="0">
+          <div class="columnist-info">
+            <div class="columnist-avatar" style="background:#0984E3;">JL</div>
+            <div>
+              <strong class="columnist-name">Jorge Leal</strong>
+              <span class="columnist-role">Economía y mercados</span>
+            </div>
+          </div>
+          <h3 class="headline-sm">El nearshoring no es una oportunidad: es una ventana que se cierra</h3>
+          <p class="card-deck">Si México no resuelve su déficit en infraestructura logística y energía antes de 2028, la inversión buscará destinos alternativos en Asia y Europa del Este.</p>
+        </article>
+
+        <article class="opinion-card" tabindex="0">
+          <div class="columnist-info">
+            <div class="columnist-avatar" style="background:#00B894;">MA</div>
+            <div>
+              <strong class="columnist-name">María Alejandra Torres</strong>
+              <span class="columnist-role">Sociedad y cultura</span>
+            </div>
+          </div>
+          <h3 class="headline-sm">El feminismo en México alcanzó la calle; ahora necesita alcanzar las leyes</h3>
+          <p class="card-deck">Tres años después del movimiento más visible de la historia reciente, el avance legislativo es insuficiente. La movilización social no puede ser el único instrumento.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MUNDO + DEPORTES -->
+  <section class="two-col-section container">
+    <div class="two-col-grid">
+
+      <div class="col-block">
+        <h2 class="block-title"><span class="block-dot" style="background:#D63031;"></span>Mundo</h2>
+        <article class="list-article" tabindex="0">
+          <span class="category-badge cat-mundo">Europa</span>
+          <h3 class="headline-sm">Francia y Alemania proponen un consejo permanente de IA en la Unión Europea</h3>
+          <time datetime="2026-06-23">Hace 2 horas</time>
+        </article>
+        <div class="divider"></div>
+        <article class="list-article" tabindex="0">
+          <span class="category-badge cat-mundo">Asia</span>
+          <h3 class="headline-sm">China e India acuerdan retomar diálogo fronterizo interrumpido en 2024</h3>
+          <time datetime="2026-06-23">Hace 4 horas</time>
+        </article>
+        <div class="divider"></div>
+        <article class="list-article" tabindex="0">
+          <span class="category-badge cat-mundo">Estados Unidos</span>
+          <h3 class="headline-sm">El Congreso de EE.UU. debate nuevas tarifas a productos manufacturados en México bajo el T-MEC</h3>
+          <time datetime="2026-06-23">Hace 5 horas</time>
+        </article>
+        <div class="divider"></div>
+        <article class="list-article" tabindex="0">
+          <span class="category-badge cat-mundo">Latinoamérica</span>
+          <h3 class="headline-sm">Argentina registra superávit fiscal por quinto mes consecutivo; el FMI elogia el ajuste</h3>
+          <time datetime="2026-06-23">Hace 8 horas</time>
+        </article>
+      </div>
+
+      <div class="col-block">
+        <h2 class="block-title"><span class="block-dot" style="background:#F59E0B;"></span>Deportes</h2>
+        <article class="list-article" tabindex="0">
+          <span class="category-badge cat-deportes">Fútbol</span>
+          <h3 class="headline-sm">México golea 3-0 a Jamaica en Copa Oro y espera rival en cuartos de final</h3>
+          <time datetime="2026-06-23">Hace 1 hora</time>
+        </article>
+        <div class="divider"></div>
+        <article class="list-article" tabindex="0">
+          <span class="category-badge cat-deportes">Béisbol</span>
+          <h3 class="headline-sm">Diablos Rojos del México lideran la Liga Mexicana de Beisbol con récord de 45-18</h3>
+          <time datetime="2026-06-23">Hace 3 horas</time>
+        </article>
+        <div class="divider"></div>
+        <article class="list-article" tabindex="0">
+          <span class="category-badge cat-deportes">Boxeo</span>
+          <h3 class="headline-sm">Canelo Álvarez confirma pelea ante campeón de peso supermediano en septiembre</h3>
+          <time datetime="2026-06-23">Hace 6 horas</time>
+        </article>
+        <div class="divider"></div>
+        <article class="list-article" tabindex="0">
+          <span class="category-badge cat-deportes">Fórmula 1</span>
+          <h3 class="headline-sm">Checo Pérez anunciará su futuro en Red Bull Racing la próxima semana, según fuentes cercanas</h3>
+          <time datetime="2026-06-23">Hace 7 horas</time>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BOLETÍN -->
+  <section class="newsletter-section">
+    <div class="container newsletter-inner">
+      <div class="newsletter-text">
+        <h2>Recibe las noticias más importantes cada mañana</h2>
+        <p>Sin ruido, sin clickbait. Solo lo que necesitas saber antes de las 7 AM.</p>
+      </div>
+      <div class="newsletter-form">
+        <input type="email" placeholder="tu@correo.com" aria-label="Correo electrónico" />
+        <button type="button">Suscribirme</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">El Diario <em>Nacional</em></span>
+        <p>Información confiable para una ciudadanía informada desde 1987.</p>
+      </div>
+      <div class="footer-links-grid">
+        <div>
+          <strong>Secciones</strong>
+          <a href="#">México</a>
+          <a href="#">Mundo</a>
+          <a href="#">Economía</a>
+          <a href="#">Política</a>
+          <a href="#">Tecnología</a>
+        </div>
+        <div>
+          <strong>El periódico</strong>
+          <a href="#">Acerca de nosotros</a>
+          <a href="#">Código de ética</a>
+          <a href="#">Equipo editorial</a>
+          <a href="#">Publicidad</a>
+        </div>
+        <div>
+          <strong>Servicios</strong>
+          <a href="#">Suscripciones</a>
+          <a href="#">Boletines</a>
+          <a href="#">App móvil</a>
+          <a href="#">Hemeroteca</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <span>© 2026 El Diario Nacional. Todos los derechos reservados.</span>
+      <div class="footer-legal">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos de uso</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
