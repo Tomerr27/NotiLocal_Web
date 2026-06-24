@@ -8,7 +8,7 @@
 // Si el frontend y el API están en el mismo servidor, usa "" (ruta relativa).
 // Si son servicios distintos, pon la URL completa, ej:
 //   const API_BASE = "https://tu-api.onrender.com";
-const API_BASE = "";   // <-- cambia aquí si tu API está en otro dominio
+const API_BASE = "https://notilocal.onrender.com";   // <-- cambia aquí si tu API está en otro dominio
 
 const IMG_FALLBACK = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=70&auto=format";
 
