@@ -17,7 +17,7 @@ const FB_PAGE_ID      = process.env.FB_PAGE_ID;       // ID numérico de tu pág
 const FB_ACCESS_TOKEN = process.env.FB_ACCESS_TOKEN;  // Token de página (long-lived)
 
 // URL pública de tu sitio (para incluir en los posts de Facebook)
-const SITE_URL = process.env.SITE_URL || "https://tu-sitio.onrender.com";
+const SITE_URL = process.env.SITE_URL || "https://notilocal-web.onrender.com/";
 
 // Intervalo de publicación (expresión cron)
 // Por defecto: cada 3 horas  →  "0 */3 * * *"
