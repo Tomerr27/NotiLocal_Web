@@ -752,3 +752,87 @@ img {
   .hero-img-wrap img,
   .card-img-wrap img { transition: none; }
 }
+
+/* ——————————————————————————————
+   SKELETONS (estados de carga)
+—————————————————————————————— */
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
+
+.skeleton-box,
+.skeleton-text,
+.skeleton-card,
+.skeleton-card-full {
+  background: linear-gradient(90deg, var(--gris-100) 25%, var(--gris-300) 50%, var(--gris-100) 75%);
+  background-size: 600px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: var(--radius);
+}
+
+.skeleton-text {
+  display: block;
+  height: 1em;
+  margin-bottom: 8px;
+}
+
+.skeleton-card {
+  height: 80px;
+  margin: 12px 0;
+}
+
+.skeleton-card-full {
+  height: 280px;
+}
+
+/* ——————————————————————————————
+   BUSCADOR
+—————————————————————————————— */
+.search-bar {
+  padding-block: 12px;
+  border-bottom: 1px solid var(--gris-300);
+  margin-bottom: 4px;
+}
+
+.search-inner {
+  display: flex;
+  gap: 8px;
+  max-width: 560px;
+}
+
+.search-inner input {
+  flex: 1;
+  padding: 9px 14px;
+  border: 1px solid var(--gris-300);
+  border-radius: var(--radius);
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  color: var(--texto);
+  background: var(--blanco);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-inner input:focus { border-color: var(--azul-tinta); }
+
+.search-inner button {
+  padding: 9px 18px;
+  background: var(--azul-tinta);
+  color: var(--blanco);
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.search-inner button:hover { background: var(--azul-medio); }
+.search-inner button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.search-status {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: var(--gris-500);
+}
