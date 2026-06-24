@@ -1,35 +1,79 @@
-# El Diario Nacional
+# El Diario Nacional — Con Autopublicación en Facebook
 
-Página web de noticias lista para desplegar en Render.com.
-
-## Archivos
-
+## Archivos del proyecto
 ```
 noticiero/
-├── index.html   — Página principal
-├── style.css    — Estilos
-├── main.js      — Lógica interactiva
-├── render.yaml  — Configuración de Render
-└── README.md
+├── index.html        — Página principal con noticias en tiempo real
+├── style.css         — Estilos
+├── main.js           — Lógica del frontend (integración con API de noticias)
+├── server.js         — Servidor Express + cron de Facebook
+├── package.json      — Dependencias
+├── .env.example      — Plantilla de variables de entorno
+└── render.yaml       — Config de Render
 ```
 
-## Cómo subir a Render
+---
 
-1. **Sube los archivos a GitHub:**
-   - Crea un repo en github.com
-   - Sube los 4 archivos (index.html, style.css, main.js, render.yaml)
+## ¿Cómo configurar Facebook?
 
-2. **Crea el servicio en Render:**
-   - Ve a https://render.com y crea cuenta gratuita
-   - Click en **"New +"** → **"Static Site"**
-   - Conecta tu repositorio de GitHub
-   - En **"Publish Directory"** escribe: `.`
-   - Click **"Create Static Site"**
+### Paso 1 — Crear una app en Meta for Developers
+1. Ve a https://developers.facebook.com
+2. Click en **"Mis apps"** → **"Crear app"**
+3. Tipo: **"Empresa"** o **"Acceso a funciones de la app"**
+4. Añade el producto **"Facebook Login"** y **"Pages API"**
 
-3. **¡Listo!** Render te dará una URL del tipo `https://el-diario-nacional.onrender.com`
+### Paso 2 — Obtener el Page Access Token
+1. Ve a **Graph API Explorer**: https://developers.facebook.com/tools/explorer
+2. Selecciona tu app en el desplegable superior
+3. En **"User or Page"** selecciona tu Página de Facebook
+4. Agrega los permisos: `pages_manage_posts`, `pages_read_engagement`
+5. Click en **"Generate Access Token"** y autoriza
+6. Copia el token generado
 
-## Personalización
+### Paso 3 — Convertir a token de larga duración (importante)
+El token anterior dura ~1 hora. Para que sea permanente:
+```
+GET https://graph.facebook.com/v19.0/oauth/access_token
+  ?grant_type=fb_exchange_token
+  &client_id=TU_APP_ID
+  &client_secret=TU_APP_SECRET
+  &fb_exchange_token=TOKEN_CORTO
+```
+Puedes hacer esto directo en el Graph API Explorer con el endpoint anterior.
 
-- Cambia el nombre del periódico en `index.html` (busca "El Diario Nacional")
-- Edita colores en `style.css` en la sección `:root`
-- Reemplaza las noticias de ejemplo con contenido real
+### Paso 4 — Obtener el ID de tu Página
+- Ve a tu Página de Facebook → Acerca de → desplázate hasta el final → **ID de la página**
+- O en el Graph API Explorer ejecuta: `GET /me?fields=id,name` con el token de página
+
+---
+
+## Variables de entorno en Render
+
+En tu servicio de Render → **Environment** → agrega:
+
+| Variable         | Valor                          |
+|------------------|-------------------------------|
+| `FB_PAGE_ID`     | ID numérico de tu página      |
+| `FB_ACCESS_TOKEN`| Token de larga duración       |
+| `SITE_URL`       | https://tu-sitio.onrender.com |
+| `CRON_INTERVAL`  | `0 */3 * * *` (cada 3 horas)  |
+| `NEWS_API_BASE`  | URL de tu API (si es otro servicio) |
+| `ADMIN_TOKEN`    | Una contraseña segura         |
+
+---
+
+## Endpoints de administración
+
+| Endpoint | Descripción |
+|----------|-------------|
+| `GET /admin/fb-status?token=TU_TOKEN` | Ver estado, historial de posts y próxima ejecución |
+| `POST /admin/fb-publicar-ahora?token=TU_TOKEN` | Forzar publicación inmediata |
+| `POST /admin/fb-limpiar?token=TU_TOKEN` | Limpiar historial (permite re-publicar) |
+
+---
+
+## Configuración en Render (Web Service Node)
+
+- **Build Command:** `npm install`
+- **Start Command:** `node server.js`
+- **Environment:** Node
