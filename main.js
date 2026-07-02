@@ -12,6 +12,52 @@ const API_BASE = "https://notilocal.onrender.com";   // <-- cambia aquí si tu A
 
 const IMG_FALLBACK = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=70&auto=format";
 
+/* ============================================================
+   ADSENSE — carga responsable
+   ------------------------------------------------------------
+   Las Políticas del Programa de AdSense prohíben mostrar anuncios
+   servidos por Google en pantallas SIN contenido del editor (vacías,
+   en carga/skeleton, en error) o usadas solo para navegación.
+   Por eso el script de AdSense y los <ins class="adsbygoogle"> nunca
+   se cargan por adelantado: se insertan y se muestran únicamente
+   cuando ya hay noticias reales renderizadas en la página, y se
+   ocultan de nuevo mientras se cargan nuevas secciones.
+   ============================================================ */
+let adsScriptLoaded = false;
+const AD_SLOT_IDS = ["ad-slot-1", "ad-slot-2"];
+
+function hideAds() {
+  AD_SLOT_IDS.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.hidden = true;
+  });
+}
+
+function showAdsForRealContent() {
+  // Nunca mostrar anuncios si no hay artículos reales que acompañarlos.
+  const slots = AD_SLOT_IDS.map(id => document.getElementById(id)).filter(Boolean);
+  if (!slots.length) return;
+
+  if (!adsScriptLoaded) {
+    adsScriptLoaded = true;
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4996768496189065";
+    script.crossOrigin = "anonymous";
+    script.onload = () => {
+      slots.forEach(slot => {
+        slot.hidden = false;
+        try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) { /* noop */ }
+      });
+    };
+    document.head.appendChild(script);
+  } else {
+    slots.forEach(slot => { slot.hidden = false; });
+    // Si el script ya está cargado y estamos re-mostrando anuncios en una
+    // navegación posterior, no volvemos a hacer push sobre <ins> ya inicializados.
+  }
+}
+
 // Mapa de categoría API → badge CSS + etiqueta visual
 const CAT_MAP = {
   business:      { cls: "cat-economia",  label: "Economía" },
@@ -225,6 +271,7 @@ function initSearch() {
     status.hidden = false;
     status.textContent = `Buscando "${q}"...`;
     document.getElementById("seccion-label").textContent = `Resultados: ${q}`;
+    hideAds(); // pantalla de búsqueda en curso: sin anuncios hasta tener resultados
 
     try {
       const arts = await fetchNoticias({ q, cantidad: 9 });
@@ -236,6 +283,7 @@ function initSearch() {
       renderHero(arts);
       renderSidebar(arts);
       renderGrid(arts);
+      showAdsForRealContent();
       window.scrollTo({ top: document.querySelector(".hero").offsetTop - 80, behavior: "smooth" });
     } catch(e) {
       status.textContent = "Error al buscar. Intenta de nuevo.";
@@ -265,19 +313,23 @@ function initNav() {
       document.getElementById("search-input").value = "";
       document.getElementById("search-status").hidden = true;
 
-      // Mostrar skeletons mientras carga
+      // Mostrar skeletons mientras carga (y ocultar anuncios: pantalla de carga)
       document.getElementById("hero-sidebar").innerHTML = skeletonCards(4);
       document.getElementById("news-grid").innerHTML = skeletonCards(3, true);
+      hideAds();
 
       try {
         const arts = cat
           ? await fetchNoticias({ categoria: cat, cantidad: 10 })
           : await fetchTop({ cantidad: 10 });
+        if (!arts.length) throw new Error("vacío");
         renderHero(arts);
         renderSidebar(arts);
         renderGrid(arts);
+        showAdsForRealContent();
       } catch {
         showError("No se pudieron cargar las noticias de esta sección.");
+        hideAds();
       }
     });
   });
@@ -350,11 +402,15 @@ async function init() {
       renderColumna("col-deportes", "sports"),
     ]);
 
+    // Solo mostramos anuncios cuando confirmamos que hay noticias reales.
+    if (topArts.length) showAdsForRealContent(); else hideAds();
+
   } catch (err) {
     console.error("Error cargando noticias:", err);
     document.getElementById("ticker").innerHTML =
       '<span class="ticker-item">No se pudo conectar con el servidor de noticias.</span>';
     showError("No se pudo conectar con la API de noticias. Verifica que tu servidor esté activo.");
+    hideAds(); // nunca anuncios sobre una pantalla de error / sin contenido
   }
 }
 

@@ -9,8 +9,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4996768496189065"
-     crossorigin="anonymous"></script>
+  <!--
+    IMPORTANTE (política de AdSense):
+    El script de AdSense y los <ins class="adsbygoogle"> ya NO se cargan aquí de forma
+    incondicional. Se insertan desde main.js únicamente DESPUÉS de que el contenido
+    editorial (noticias) se haya cargado con éxito. Así evitamos mostrar anuncios en
+    pantallas de carga (skeletons), pantallas de error, o pantallas sin contenido,
+    lo cual infringe las Políticas del Programa de AdSense.
+  -->
 </head>
 <body>
 
@@ -92,6 +98,21 @@
     </div>
   </section>
 
+  <!--
+    ESPACIO PUBLICITARIO 1
+    Vacío por defecto (hidden). main.js le da contenido y lo muestra SOLO
+    cuando el hero y la barra lateral ya tienen noticias reales cargadas.
+  -->
+  <div class="ad-slot container" id="ad-slot-1" hidden>
+    <span class="ad-label">Publicidad</span>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4996768496189065"
+         data-ad-slot="0000000001"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+
   <!-- DIVISOR EDITORIAL -->
   <div class="section-divider container">
     <span id="seccion-label">Lo más reciente</span>
@@ -103,6 +124,20 @@
     <div class="news-card skeleton-card-full"></div>
     <div class="news-card skeleton-card-full"></div>
   </section>
+
+  <!--
+    ESPACIO PUBLICITARIO 2
+    Igual que el anterior: oculto hasta que haya artículos reales en el grid.
+  -->
+  <div class="ad-slot container" id="ad-slot-2" hidden>
+    <span class="ad-label">Publicidad</span>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4996768496189065"
+         data-ad-slot="0000000002"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
 
   <!-- FRANJA DESTACADA: OPINIÓN (estática) -->
   <section class="opinion-strip">

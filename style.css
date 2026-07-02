@@ -836,3 +836,27 @@ img {
   font-size: 0.8rem;
   color: var(--gris-500);
 }
+
+/* ============================================================
+   ESPACIOS PUBLICITARIOS
+   Ocultos con [hidden] hasta que main.js confirme que hay
+   contenido editorial real cargado en la página (política AdSense:
+   no servir anuncios en pantallas sin contenido / de carga / error).
+   ============================================================ */
+.ad-slot {
+  margin: 32px auto;
+  padding: 12px 0;
+  border-top: 1px solid var(--gris-200, #e5e5e5);
+  border-bottom: 1px solid var(--gris-200, #e5e5e5);
+  text-align: center;
+}
+.ad-slot[hidden] { display: none !important; }
+.ad-label {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gris-500, #888);
+  margin-bottom: 8px;
+}
