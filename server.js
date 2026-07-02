@@ -160,6 +160,13 @@ console.log(`[FB] Cron programado: "${CRON_INTERVAL}" — Próxima ejecución ~$
 // ─── RUTAS EXPRESS ────────────────────────────────────────────
 app.use(express.static(path.join(__dirname)));
 
+// Keep-alive / ping — no consulta nada, solo confirma que el servidor
+// está despierto. Úsalo con un pinger externo (UptimeRobot, cron-job.org,
+// etc.) para evitar que Render duerma tu servicio en el plan free.
+app.get('/ping', (req, res) => {
+  res.type('text/plain').send('online');
+});
+
 // Panel de estado (JSON) — úsalo para monitorear
 app.get('/admin/fb-status', (req, res) => {
   // Protección simple con token de admin
