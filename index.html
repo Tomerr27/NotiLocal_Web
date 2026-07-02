@@ -144,7 +144,7 @@
     <div class="container">
       <h2 class="strip-title">Opinión</h2>
       <div class="opinion-grid">
-        <article class="opinion-card" tabindex="0">
+        <article class="opinion-card" tabindex="0" onclick="window.location.href='opinion-elecciones-2027.html'" style="cursor:pointer;">
           <div class="columnist-info">
             <div class="columnist-avatar" style="background:#D63031;">CR</div>
             <div>
@@ -155,7 +155,7 @@
           <h3 class="headline-sm">"Las elecciones de 2027 ya comenzaron, y nadie quiere admitirlo"</h3>
           <p class="card-deck">La carrera por la presidencia se libra en el lenguaje de los proyectos sociales. El país necesita claridad, no estrategia.</p>
         </article>
-        <article class="opinion-card" tabindex="0">
+        <article class="opinion-card" tabindex="0" onclick="window.location.href='opinion-nearshoring.html'" style="cursor:pointer;">
           <div class="columnist-info">
             <div class="columnist-avatar" style="background:#0984E3;">JL</div>
             <div>
@@ -166,7 +166,7 @@
           <h3 class="headline-sm">El nearshoring no es una oportunidad: es una ventana que se cierra</h3>
           <p class="card-deck">Si México no resuelve su déficit en infraestructura logística antes de 2028, la inversión buscará destinos alternativos.</p>
         </article>
-        <article class="opinion-card" tabindex="0">
+        <article class="opinion-card" tabindex="0" onclick="window.location.href='opinion-feminismo-leyes.html'" style="cursor:pointer;">
           <div class="columnist-info">
             <div class="columnist-avatar" style="background:#00B894;">MA</div>
             <div>
@@ -195,8 +195,22 @@
     </div>
   </section>
 
+  <!-- TECNOLOGÍA + CULTURA dinámicos -->
+  <section class="two-col-section container">
+    <div class="two-col-grid">
+      <div class="col-block">
+        <h2 class="block-title"><span class="block-dot" style="background:#0984E3;"></span>Tecnología</h2>
+        <div id="col-tech"><div class="skeleton-card"></div><div class="divider"></div><div class="skeleton-card"></div><div class="divider"></div><div class="skeleton-card"></div></div>
+      </div>
+      <div class="col-block">
+        <h2 class="block-title"><span class="block-dot" style="background:#00B894;"></span>Cultura</h2>
+        <div id="col-cultura"><div class="skeleton-card"></div><div class="divider"></div><div class="skeleton-card"></div><div class="divider"></div><div class="skeleton-card"></div></div>
+      </div>
+    </div>
+  </section>
+
   <!-- BOLETÍN -->
-  <section class="newsletter-section">
+  <section class="newsletter-section" id="boletin">
     <div class="container newsletter-inner">
       <div class="newsletter-text">
         <h2>Recibe las noticias más importantes cada mañana</h2>
@@ -219,25 +233,34 @@
       <div class="footer-links-grid">
         <div>
           <strong>Secciones</strong>
-          <a href="#">México</a><a href="#">Mundo</a><a href="#">Economía</a>
-          <a href="#">Política</a><a href="#">Tecnología</a>
+          <a href="index.html?categoria=general">México</a>
+          <a href="index.html?categoria=world">Mundo</a>
+          <a href="index.html?categoria=business">Economía</a>
+          <a href="index.html?categoria=politics">Política</a>
+          <a href="index.html?categoria=tech">Tecnología</a>
         </div>
         <div>
           <strong>El periódico</strong>
-          <a href="#">Acerca de nosotros</a><a href="#">Código de ética</a>
-          <a href="#">Equipo editorial</a><a href="#">Publicidad</a>
+          <a href="acerca-de.html">Acerca de nosotros</a>
+          <a href="codigo-etica.html">Código de ética</a>
+          <a href="equipo-editorial.html">Equipo editorial</a>
+          <a href="publicidad.html">Publicidad</a>
         </div>
         <div>
           <strong>Servicios</strong>
-          <a href="#">Suscripciones</a><a href="#">Boletines</a>
-          <a href="#">App móvil</a><a href="#">Hemeroteca</a>
+          <a href="suscripciones.html">Suscripciones</a>
+          <a href="#boletin">Boletines</a>
+          <a href="app-movil.html">App móvil</a>
+          <a href="hemeroteca.html">Hemeroteca</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom container">
       <span>© 2026 El Diario Nacional. Todos los derechos reservados.</span>
       <div class="footer-legal">
-        <a href="#">Privacidad</a><a href="#">Términos de uso</a><a href="#">Cookies</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="terminos.html">Términos de uso</a>
+        <a href="cookies.html">Cookies</a>
       </div>
     </div>
   </footer>

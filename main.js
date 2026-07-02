@@ -185,7 +185,7 @@ function renderHero(articulos) {
 function renderSidebar(articulos) {
   const sidebar = document.getElementById("hero-sidebar");
   if (!sidebar) return;
-  const items = articulos.slice(1, 5);
+  const items = articulos.slice(1, 6);
   sidebar.innerHTML = items.map((a, i) => {
     const cat = catInfo(a.categoria);
     return `
@@ -207,7 +207,7 @@ function renderSidebar(articulos) {
 function renderGrid(articulos) {
   const grid = document.getElementById("news-grid");
   if (!grid) return;
-  const items = articulos.slice(5, 8);
+  const items = articulos.slice(6, 12);
   if (!items.length) { grid.innerHTML = "<p style='color:var(--gris-500);grid-column:1/-1;padding:16px 0'>No hay más artículos disponibles.</p>"; return; }
 
   grid.innerHTML = items.map(a => {
@@ -274,7 +274,7 @@ function initSearch() {
     hideAds(); // pantalla de búsqueda en curso: sin anuncios hasta tener resultados
 
     try {
-      const arts = await fetchNoticias({ q, cantidad: 9 });
+      const arts = await fetchNoticias({ q, cantidad: 15 });
       if (!arts.length) {
         status.textContent = "No se encontraron resultados.";
         return;
@@ -320,8 +320,8 @@ function initNav() {
 
       try {
         const arts = cat
-          ? await fetchNoticias({ categoria: cat, cantidad: 10 })
-          : await fetchTop({ cantidad: 10 });
+          ? await fetchNoticias({ categoria: cat, cantidad: 15 })
+          : await fetchTop({ cantidad: 15 });
         if (!arts.length) throw new Error("vacío");
         renderHero(arts);
         renderSidebar(arts);
@@ -377,6 +377,15 @@ function initNewsletter() {
   });
 }
 
+// ——— DEEP LINK POR CATEGORÍA (?categoria=tech) ———
+function applyCategoriaFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const cat = params.get("categoria");
+  if (!cat) return;
+  const link = document.querySelector(`.nav-link[data-categoria="${cat}"]`);
+  if (link) link.click();
+}
+
 // ——— INIT ———
 async function init() {
   initClock();
@@ -387,7 +396,7 @@ async function init() {
   try {
     // Carga principal: top noticias
     const [topArts, mundoArts] = await Promise.all([
-      fetchTop({ cantidad: 10 }),
+      fetchTop({ cantidad: 15 }),
       fetchNoticias({ categoria: "world", cantidad: 4 }),
     ]);
 
@@ -400,10 +409,15 @@ async function init() {
     await Promise.all([
       renderColumna("col-mundo", "world"),
       renderColumna("col-deportes", "sports"),
+      renderColumna("col-tech", "tech"),
+      renderColumna("col-cultura", "entertainment"),
     ]);
 
     // Solo mostramos anuncios cuando confirmamos que hay noticias reales.
     if (topArts.length) showAdsForRealContent(); else hideAds();
+
+    // Si se llegó desde un enlace con ?categoria=, aplicar ese filtro
+    applyCategoriaFromURL();
 
   } catch (err) {
     console.error("Error cargando noticias:", err);
