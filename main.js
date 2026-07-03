@@ -173,6 +173,35 @@ function renderHero(articulos) {
     `;
   }
 
+  // Extracto — texto adicional del artículo (más allá del resumen corto),
+  // para aprovechar el espacio del hero y dar más contexto antes de salir
+  // hacia la fuente original.
+  const extractEl = document.getElementById("hero-extract");
+  if (extractEl) {
+    const extracto = (a.contenido || "").trim();
+    if (extracto && extracto.toLowerCase() !== (a.descripcion || "").trim().toLowerCase()) {
+      extractEl.innerHTML = `${extracto} <a href="${a.url}" target="_blank" rel="noopener" class="hero-extract-link" onclick="event.stopPropagation();">Leer la nota completa en ${a.fuente || "la fuente original"} →</a>`;
+      extractEl.style.display = "";
+    } else {
+      extractEl.style.display = "none";
+    }
+  }
+
+  // "También te puede interesar" — un par de enlaces relacionados para
+  // llenar el espacio del hero con contenido útil en vez de vacío.
+  const relatedEl = document.getElementById("hero-related");
+  if (relatedEl) {
+    const relacionados = articulos.slice(1, 4);
+    if (relacionados.length) {
+      relatedEl.innerHTML = `
+        <strong class="hero-related-title">También te puede interesar</strong>
+        <ul>
+          ${relacionados.map(r => `<li><a href="${r.url}" target="_blank" rel="noopener" onclick="event.stopPropagation();">${r.titulo}</a></li>`).join("")}
+        </ul>
+      `;
+    }
+  }
+
   // Click → abrir artículo
   const heroMain = document.getElementById("hero-main");
   if (heroMain && a.url) {

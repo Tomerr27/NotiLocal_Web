@@ -961,3 +961,57 @@ img {
 @media (max-width: 580px) {
   .team-grid { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   HERO — EXTRACTO Y RELACIONADOS
+   Aprovechan el espacio vacío bajo el resumen del hero en pantallas
+   donde la barra lateral es más alta que la nota principal.
+   ============================================================ */
+.hero-extract {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--gris-700);
+  padding-top: 16px;
+  margin-top: 16px;
+  border-top: 1px solid var(--gris-200, #e5e5e5);
+  display: none;
+}
+.hero-extract-link {
+  display: inline-block;
+  margin-left: 4px;
+  color: var(--rojo-edit);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.hero-extract-link:hover { text-decoration: underline; }
+
+.hero-related {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--gris-200, #e5e5e5);
+}
+.hero-related-title {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gris-500, #888);
+  margin-bottom: 10px;
+}
+.hero-related ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.hero-related a {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--azul-tinta);
+  line-height: 1.4;
+}
+.hero-related a:hover { color: var(--rojo-edit); }
